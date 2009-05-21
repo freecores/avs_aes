@@ -183,16 +183,13 @@ begin  -- architecture arch1
 		-- Set the interrupt if enabed and process finished
 		if irq_ena = '1' and finished = '1' then
 			irq_i <= '1';
-		else
-			irq_i <= irq;				-- just keep the way it is 
-		end if;
-
-		-- any read operation resets the interrupt
-		if irq_ena = '0' or avs_s1_read = '1' then
+		elsif irq_ena = '0' or avs_s1_read = '1' then
+			-- any read operation resets the interrupt
 			irq_i <= '0';
 		else
 			irq_i <= irq;				-- just keep the way it is 
 		end if;
+
 	end process IRQhandling;
 
 
