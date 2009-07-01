@@ -237,7 +237,7 @@ clockcycles from \texttt{data\_stable=1} to completion, if the key is already ex
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[\width=100mm]{encrypt_FSM}
+  \includegraphics[width=100mm]{encrypt_FSM}
   \caption{Finite State Machine of encryption and decryption process}
   \label{fig:aesFSM}
 \end{figure}
@@ -339,6 +339,26 @@ compiled into this library as all files depend at least on the package
 A Makefile for Mentorgraphics\rtm\ Modelsim\rtm\ is given in \texttt{./sim/}. The
 make target \texttt{simaes} will create the library, compile all files and run a
 testbench.\\
+
+\section{The Inner Core}
+\label{sec:core}
+The algorithmic core is devided into two seperate datapaths one for encryption and a
+second for decryption operation. The two datapaths are independent, however they
+share the keyexpansion component which provides decrypt and encrypt keys (which are
+the same only in opposite order). Each datapath is controlled by its own \FSM\.  If
+configured by the generic \texttt{DECRYPTION} \ref{gen:decryption} the decryption
+datapath is included and some multiplexers are generated for the shared signals,
+e.g. \texttt{result} or \texttt{roundkey\_index}.\\
+For reference the encryption data path of \texttt{aes\_core.vhd} is given in figure
+\ref{fig:aescore}. The decryption datapath is left for the reader or any other author
+of this document.
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.9\textwidth]{CoreEncDP}
+  \caption{Encrypt datapath of the AES core as implemented in aes\_core.vhd}
+  \label{fig:aescore}
+\end{figure}
+
 
 \newpage
 \section{License and Liability}
