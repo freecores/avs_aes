@@ -55,9 +55,6 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-library util_lib;
-use util_lib.util_pkg.all;
-
 library aes_ecb_lib;
 use aes_ecb_lib.aes_ecb_pkg.all;
 
