@@ -13,10 +13,10 @@
 \usepackage{capt-of}
 
 %%% Water mark 
-\usepackage{draftwatermark}
-\SetWatermarkText{\shortstack{DRAFT}}
-\SetWatermarkScale{0.9}
-\SetWatermarkLightness{0.85}
+%\usepackage{draftwatermark}
+%\SetWatermarkText{\shortstack{DRAFT}}
+%\SetWatermarkScale{0.9}
+%\SetWatermarkLightness{0.85}
 
 \makeacronym
 \makeglossary
@@ -29,8 +29,8 @@
 %%%%%%%%%%%%%%%%%
 \docDate{ \today }
 \docID{avs\_aes\_doc}
-\docRevision{0.4}
-\docStatus{Draft}
+\docRevision{0.5}
+\docStatus{Final}
 \docTitle{\mbox{AES 128/192/256 (ECB)}  \mbox{Avalon\rtm-MM Slave}}
 \keywords{Avalon, bus, slave, cryptography, AES, ecb, IP core }
 
@@ -47,13 +47,13 @@
 0.2 & all & added interrupt  & 2009/03/25  & T. Ruschival \\
 0.3 & all & added generics  & 2009/04/20  & T. Ruschival \\
 0.4 & all & cleanup for opencores.org  & 2009/05/20  & T. Ruschival \\
+0.5 & all & final release  & 2010/03/07  & T. Ruschival \\
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \begin{document}
 \maketitle
-
 \newpage
 \tableofcontents
 \newpage
@@ -99,6 +99,7 @@ consequently they are provided by the Avalon\rtm\ interface.
 \footnotetext[1]{All other values raise a compilation failure}
 \captionof{table}{Component generics}
 \label{tab:generics}
+Note: \texttt{KEYLENGTH} of 192 fail synthesis with Xilinx ISE \rtm\ because of division by 6 in key schedule that cannot be mapped to shift operations (\texttt{keyexpansion.vhd}).
 
 \subsection{Signals}
 \label{sec:signals}
