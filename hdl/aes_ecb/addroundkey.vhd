@@ -1,6 +1,6 @@
 -------------------------------------------------------------------------------
--- This file is part of the project  MYPROJECTNAME
--- see:  MYPROJECTURL
+-- This file is part of the project  avs_aes
+-- see:  http://opencores.org/project,avs_aes
 --
 -- description:
 -- AddRoundKey module for AES algorithm, basically a simple XOR for states and

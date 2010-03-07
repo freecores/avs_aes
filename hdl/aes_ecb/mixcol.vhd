@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
--- This file is part of the project  MYPROJECTNAME
--- see: MYPROJECTURL
+-- This file is part of the project  avs_aes
+-- see: http://opencores.org/project,avs_aes
 --
 -- description:
 -- This is only the entity to the architectures fwd and INV of mixcolumn as

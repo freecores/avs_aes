@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
--- This file is part of the project  MYPROJECTNAME
--- see: MYPROJECTURL
+-- This file is part of the project  avs_aes
+-- see: http://opencores.org/project,avs_aes
 --
 -- description: (Encryption implementation of Shiftrow) 
 -- Shift Row rotates the Rows of the AES Block

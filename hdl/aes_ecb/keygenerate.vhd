@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
--- This file is part of the project  MYPROJECTNAME
--- see: MYPROJECTURL
+-- This file is part of the project  avs_aes
+-- see: http://opencores.org/project,avs_aes
 --
 -- description: - THIS COMPONENT IS OBSOLETE!!!
 -- Generates all roundkeys for the AES algorithm. in each round on key is used
