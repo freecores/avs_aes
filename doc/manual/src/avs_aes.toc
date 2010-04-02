@@ -1,0 +1,18 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}
+\contentsline {section}{\numberline {2}Interface}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Configuration Generics}{3}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Signals}{4}{subsection.2.2}
+\contentsline {section}{\numberline {3}Memory Map}{4}{section.3}
+\contentsline {subsection}{\numberline {3.1}Control Register}{5}{subsection.3.1}
+\contentsline {section}{\numberline {4}Protocol Sequence}{6}{section.4}
+\contentsline {subsection}{\numberline {4.1}Interrupt Behaviour}{7}{subsection.4.1}
+\contentsline {section}{\numberline {5}Ressource Usage and Throughput}{7}{section.5}
+\contentsline {subsection}{\numberline {5.1}Exemplary FPGA implementations}{8}{subsection.5.1}
+\contentsline {section}{\numberline {6}Simulation and Software Driver}{9}{section.6}
+\contentsline {subsection}{\numberline {6.1}Testbench}{9}{subsection.6.1}
+\contentsline {subsubsection}{\numberline {6.1.1}Simulation}{10}{subsubsection.6.1.1}
+\contentsline {subsection}{\numberline {6.2}Software Driver}{10}{subsection.6.2}
+\contentsline {subsubsection}{\numberline {6.2.1}Configuration}{10}{subsubsection.6.2.1}
+\contentsline {subsubsection}{\numberline {6.2.2}Compilation}{10}{subsubsection.6.2.2}
+\contentsline {section}{\numberline {7}The Inner Core}{10}{section.7}
+\contentsline {section}{\numberline {8}License and Liability}{13}{section.8}

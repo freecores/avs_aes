@@ -1,0 +1,8 @@
+\glossaryentry{AES@{\glosslabel{acn:AES}{Advanced Encryption Standard\ (\noexpand \acronymfont {AES})}}NIST approved symmetric block cypher\relax|glsnumformat}{3}
+\glossaryentry{NIST@{\glosslabel{acn:NIST}{National Institute of Standards and Technology\ (\noexpand \acronymfont {NIST})}}US standardisation office\relax|glsnumformat}{3}
+\glossaryentry{ECB@{\glosslabel{acn:ECB}{Electronic Codebook\ (\noexpand \acronymfont {ECB})}}application of a cypher algorithm without further processing of the blocks\relax|glsnumformat}{3}
+\glossaryentry{SoC@{\glosslabel{acn:SoC}{System on Chip\ (\noexpand \acronymfont {SoC})}}System of seperate functional interacting together implemented on a single chip\relax|glsnumformat}{3}
+\glossaryentry{MSB@{\glosslabel{acn:MSB}{Most Significant Bit\ (\noexpand \acronymfont {MSB})}}highest value bit in a vector\relax|glsnumformat}{4}
+\glossaryentry{LSB@{\glosslabel{acn:LSB}{Least Significant Bit\ (\noexpand \acronymfont {LSB})}}least value bit in a vector\relax|glsnumformat}{4}
+\glossaryentry{FSM@{\glosslabel{acn:FSM}{Finite State Machine\ (\noexpand \acronymfont {FSM})}}Behavioural Model with finite number of states and transitions\relax|glsnumformat}{6}
+\glossaryentry{FSM@{\glosslabel{acn:FSM}{Finite State Machine\ (\noexpand \acronymfont {FSM})}}Behavioural Model with finite number of states and transitions\relax|glsnumformat}{11}

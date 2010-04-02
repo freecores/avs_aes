@@ -1,0 +1,30 @@
+\begin{theglossary}\glogroupA
+
+\gloitem {\glosslabel{acn:AES}{Advanced Encryption Standard\ (\noexpand \acronymfont {AES})}}NIST approved symmetric block cypher\relax
+\glodelim 
+		\glsnumformat{3}\delimT \gloskip \glogroupE
+
+\gloitem {\glosslabel{acn:ECB}{Electronic Codebook\ (\noexpand \acronymfont {ECB})}}application of a cypher algorithm without further processing of the blocks\relax
+\glodelim 
+		\glsnumformat{3}\delimT \gloskip \glogroupF
+
+\gloitem {\glosslabel{acn:FSM}{Finite State Machine\ (\noexpand \acronymfont {FSM})}}Behavioural Model with finite number of states and transitions\relax
+\glodelim 
+		\glsnumformat{6}\delimN \glsnumformat{11}\delimT \gloskip \glogroupL
+
+\gloitem {\glosslabel{acn:LSB}{Least Significant Bit\ (\noexpand \acronymfont {LSB})}}least value bit in a vector\relax
+\glodelim 
+		\glsnumformat{4}\delimT \gloskip \glogroupM
+
+\gloitem {\glosslabel{acn:MSB}{Most Significant Bit\ (\noexpand \acronymfont {MSB})}}highest value bit in a vector\relax
+\glodelim 
+		\glsnumformat{4}\delimT \gloskip \glogroupN
+
+\gloitem {\glosslabel{acn:NIST}{National Institute of Standards and Technology\ (\noexpand \acronymfont {NIST})}}US standardisation office\relax
+\glodelim 
+		\glsnumformat{3}\delimT \gloskip \glogroupS
+
+\gloitem {\glosslabel{acn:SoC}{System on Chip\ (\noexpand \acronymfont {SoC})}}System of seperate functional interacting together implemented on a single chip\relax
+\glodelim 
+		\glsnumformat{3}\delimT 
+\end{theglossary}
