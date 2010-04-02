@@ -58,8 +58,8 @@ avs_aes: .deps avs_aes_lib .deps/avs_aes
 	$(VCOM) $(VCOMOPS) -work avs_aes_lib  $^
 	touch .deps/avs_aes
 
-avs_aes_tb: .deps .deps/avs_aes .deps/avs_aes_tb avs_aes_lib work
-.deps/avs_aes_tb: $(AVS_AES_TB_SRC)
+avs_aes_tb: .deps .deps/avs_aes .deps/avs_aes_tb
+.deps/avs_aes_tb: work $(AVS_AES_TB_SRC)
 	@echo --
 	@echo building AVS_AES Testbench
 	@echo --
