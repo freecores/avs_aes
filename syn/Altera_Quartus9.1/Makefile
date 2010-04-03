@@ -3,7 +3,7 @@ PROJECT=avs_aes
 all: smart.log $(PROJECT).asm.rpt $(PROJECT).tan.rpt
 
 clean:
-	rm -rf *.rpt *.chg smart.log *.htm *.eqn *.pin *.sof *.pof *.summary db 
+	rm -rf *.rpt *.chg smart.log *msg *.htm *.eqn *.pin *.sof *.pof *.summary incremental_db 
 clean_all: clean
 	rm -rf *.ssf *.csf *.esf *.fsf *.psf *.quartus *.qws *.summary
 
