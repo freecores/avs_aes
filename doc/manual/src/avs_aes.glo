@@ -1,6 +1,0 @@
-\glossaryentry{Byte@{\glosslabel{glo:Byte}{Byte}}String of Bits - nowadays mostly a string of 8 Bits, also called oktett\relax|glsnumformat}{1}
-\glossaryentry{Bit@{\glosslabel{glo:Bit}{Bit}}Binary Digit, atomary information unit\relax|glsnumformat}{1}
-\glossaryentry{Switch fabric@{\glosslabel{glo:Switch fabric}{switch fabric}}Interconnect between IP-Cores providing arbiration and glue logic. Altera\rtm \ Avalon\rtm \ term\relax|glsnumformat}{1}
-\glossaryentry{Master@{\glosslabel{glo:Master}{Master}}Entity initiating and controlling communication.\relax|glsnumformat}{1}
-\glossaryentry{Slave@{\glosslabel{glo:Slave}{Slave}}Entity responding to communication requests by a Master.\relax|glsnumformat}{1}
-\glossaryentry{memory mapped@{\glosslabel{glo:memory mapped}{memory mapped}}Method of addressing peripheral components like Avalon Slaves via the same address bus as main memory\relax|glsnumformat}{1}

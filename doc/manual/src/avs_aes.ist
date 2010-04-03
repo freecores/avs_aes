@@ -1,4 +1,4 @@
-% makeindex style file created by LaTeX for document "avs_aes" on 2010-4-2
+% makeindex style file created by LaTeX for document "avs_aes" on 2010-4-3
 keyword "\\glossaryentry"
 preamble "\\begin{theglossary}"
 postamble "\n\\end{theglossary}\n"

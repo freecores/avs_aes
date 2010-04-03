@@ -10,7 +10,7 @@
 
 \gloitem {\glosslabel{acn:FSM}{Finite State Machine\ (\noexpand \acronymfont {FSM})}}Behavioural Model with finite number of states and transitions\relax
 \glodelim 
-		\glsnumformat{6}\delimN \glsnumformat{11}\delimT \gloskip \glogroupL
+		\glsnumformat{6}\delimN \glsnumformat{8}\delimT \gloskip \glogroupL
 
 \gloitem {\glosslabel{acn:LSB}{Least Significant Bit\ (\noexpand \acronymfont {LSB})}}least value bit in a vector\relax
 \glodelim 
