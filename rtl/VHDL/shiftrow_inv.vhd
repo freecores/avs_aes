@@ -39,9 +39,9 @@
 -- THE POSSIBILITY OF SUCH DAMAGE
 -------------------------------------------------------------------------------
 -- version management:
--- $Author$
--- $Date$
--- $Revision$			
+-- $Author::                                         $
+-- $Date::                                           $
+-- $Revision::                                       $
 -------------------------------------------------------------------------------
 library IEEE;
 use IEEE.numeric_std.all;
