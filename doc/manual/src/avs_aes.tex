@@ -6,10 +6,8 @@
 
 \usepackage[
 	style=altlist,
-	hyper=true,
- 	number=none,
- 	acronym=true,
-	header=none]{glossary}
+	toc=true,
+ 	acronym=true]{glossaries}
 \usepackage{capt-of}
 
 %%% Water mark 
@@ -18,9 +16,8 @@
 %\SetWatermarkScale{0.9}
 %\SetWatermarkLightness{0.85}
 
-\makeacronym
-\makeglossary
-\input{acronym}
+
+\makeglossaries
 \input{glossary}
 \bibliographystyle{IEEEtran}
 
@@ -29,7 +26,7 @@
 %%%%%%%%%%%%%%%%%
 \docDate{ \today }
 \docID{avs\_aes\_doc}
-\docRevision{0.5}
+\docRevision{0.8}
 \docStatus{Final}
 \docTitle{\mbox{AES 128/192/256 (ECB)}  \mbox{Avalon\rtm-MM Slave}}
 \keywords{Avalon, bus, slave, cryptography, AES, ecb, IP core }
@@ -50,6 +47,7 @@
 0.5 & all & final release  & 2010/03/07  & T. Ruschival \\
 0.6 & 3,6 & fixed memory map, added testbench description  & 2010/04/02  & T. Ruschival \\
 0.7 & 3,6 & fixed typos  & 2010/04/03  & T. Ruschival \\
+0.8 & 6 & corrected key schedule  & 2011/05/15  & T. Ruschival \\
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -61,11 +59,11 @@
 \newpage
 
 \section{Introduction}
-\label{sec:intro} The \AES is a symmetric block cipher operating on fixed block sizes
+\label{sec:intro} The \gls{AES} is a symmetric block cipher operating on fixed block sizes
 of 128 Bit and is specified for key sizes of 128, 192 and 256 Bit designed by Joan
-Daemen and Vincent Rijmen. The algorithm was standardized by \NIST. For more
+Daemen and Vincent Rijmen. The algorithm was standardized by \gls{NIST}. For more
 information on the algorithm see \cite{NIST:Fips197}.\\
-This component implements an AES encryption decryption data path in \ECB mode with
+This component implements an AES encryption decryption data path in \gls{ECB} mode with
 either 128,192 or 256 Bit keys.  The key length is determined by generics at compile
 time. Also the decryption data path can be disabled by generics if it is not needed
 for the application.\\
@@ -83,7 +81,7 @@ Avalon\rtm\ defines interrupt request signals for slaves which would be separate
 signals in a Wishbone implementation.The component can be used both in polling 
 mode or can provide an interrupt for signalling. \\
 Unfortunately Avalon\rtm\ is an Altera\rtm\ proprietary technology. The actual AES
-core however is a self contained entity and can be embedded into other \SoC\ bus
+core however is a self contained entity and can be embedded into other \gls{SoC} bus
 interfaces as well or used independently.
 
 \subsection{Configuration Generics}
@@ -109,7 +107,7 @@ The Avalon\rtm\-MM Slave interface is described in \cite{Altera:Avalon}, the com
 implements the signals shown in table \ref{tab:signals}. All signals are synchronous,
 sampled at the rising edge of the clock. The type for all signals is \texttt{IEEE1164
     std\_logic} or \texttt{std\_logic\_vector}. For signals wider that 1 Bit the range
-is \MSB\ \texttt{downto} \LSB\. \\
+is \gls{MSB} \texttt{downto} \gls{LSB}. \\
 This components has only output signals driven by registers no input signals are directly combinatorially connected to the
 output signals, thus combinational loops are avoided.  All signals are active
 high. This component does not support burst transfers.
@@ -229,7 +227,7 @@ after completing the requested operation.
 The result of the operation can be read from the \texttt{RESULT} area of the memory
 and is not cleared. It will be overwritten by succeeding operations. 
 
-The underlying AES core uses the \FSM\ shown in \ref{fig:aesFSM} for processing of
+The underlying AES core uses the \gls{FSM} shown in \ref{fig:aesFSM} for processing of
 the data. The signals \texttt{data\_stable} and \texttt{key\_stable} are accessible
 over the control status word \texttt{CTRL} \ref{sec:ctrl}. \texttt{key\_ready} is a
 signal driven by the key generator when all keys are expanded. The signal
@@ -265,7 +263,7 @@ or a read operation on the \texttt{RESULT} area of the components address range.
 The algorithmic core is divided into two separate data paths one for encryption and a
 second for decryption operation. The two data paths are independent, however they
 share the keyexpansion component which provides decrypt and encrypt keys (which are
-the same only in opposite order). Each data path is controlled by its own \FSM\.  If
+the same only in opposite order). Each data path is controlled by its own \gls{FSM}.  If
 configured by the generic \texttt{DECRYPTION} \ref{gen:decryption} the decryption
 data path is included and some multiplexers are generated for the shared signals,
 e.g. \texttt{result} or \texttt{roundkey\_index}.\\
@@ -287,10 +285,16 @@ plus one cycle to activate keyexpansion with the control word \ref{sec:ctrl}. A 
 always of 4 DWORDs, thus it takes 4 cycles to send data to the core, one cycle to activate the computation with the
 control register \ref{sec:ctrl} and 4 cycles to retrieve the data.
 
-The keyexpansion component computes one column of a roundkey each clock cycle. AES takes, depending on the key length,
-10, 12 or 14 roundkeys with each 4 columns, see \cite{NIST:Fips197}. The keyexpansion therefore takes 40, 48 or 56
-cycles until the encryption or decryption can start. The roundkeys are stored until invalidated, see \ref{sec:usage}
-thus this step is is only needed once after power-up until the key changes.
+The keyexpansion component computes one column of a roundkey in two clock cycles. In
+the first cycle the column is substituted throught the s-box, in the second cycle the
+shift-operation is executed. AES specifies \cite{NIST:Fips197}, depending on the key length $ N_{roundkeys}=\{10,12,14\} $
+roundkeys with 4 columns each. The \gls{FSM} of the keyexpansion module adds o clockcycle for the ``DONE'' state. 
+\begin{equation}
+  T_{keyexpansion}(N_{roundkeys}) = 2 \cdot 4 \cdot N_{roundkeys} +1 
+\label{eqn:keyexp}
+\end{equation}
+The keyexpansion therefore takes 81, 97 or 115 clockcycles until the encryption or decryption can start. The
+roundkeys are stored until invalidated, see \ref{sec:usage} thus this step is is only needed once after power-up until the key changes.
 
 The AES core computes one iteration (round) of the Rijndael-Algorithm each clock cycle, thus a 128 Bit data block is
 encrypted or decrypted in 10, 12 or 14 cycles plus an initial round.
@@ -356,7 +360,6 @@ the address signals is one of the main reasons for regression of the maximum
 frequency $f_{max}$ of the configuration compared to encryption only versions. 
 
 \section{Simulation}
-\label{sec:simulation}
 \subsection{Testbench}
 \label{sec:testbench}
 In \texttt{./bench/VHDL/} a ``self-checking testbench'' is provided which runs tests
@@ -453,8 +456,7 @@ IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
  Mentor Graphics and ModelSim are registered trademarks of Mentor Graphics
  Corporation 8005 SW Boeckman Road, Wilsonville OR USA \newpage
 
-\printacronym
-\printglossary
+\printglossaries 
 
 \bibliography{cited}
 \revisionTable

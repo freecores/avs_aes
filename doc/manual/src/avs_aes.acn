@@ -1,30 +1,9 @@
-\begin{theglossary}\glogroupA
-
-\gloitem {\glosslabel{acn:AES}{Advanced Encryption Standard\ (\noexpand \acronymfont {AES})}}NIST approved symmetric block cypher\relax
-\glodelim 
-		\glsnumformat{3}\delimT \gloskip \glogroupE
-
-\gloitem {\glosslabel{acn:ECB}{Electronic Codebook\ (\noexpand \acronymfont {ECB})}}application of a cypher algorithm without further processing of the blocks\relax
-\glodelim 
-		\glsnumformat{3}\delimT \gloskip \glogroupF
-
-\gloitem {\glosslabel{acn:FSM}{Finite State Machine\ (\noexpand \acronymfont {FSM})}}Behavioural Model with finite number of states and transitions\relax
-\glodelim 
-		\glsnumformat{6}\delimN \glsnumformat{8}\delimT \gloskip \glogroupL
-
-\gloitem {\glosslabel{acn:LSB}{Least Significant Bit\ (\noexpand \acronymfont {LSB})}}least value bit in a vector\relax
-\glodelim 
-		\glsnumformat{4}\delimT \gloskip \glogroupM
-
-\gloitem {\glosslabel{acn:MSB}{Most Significant Bit\ (\noexpand \acronymfont {MSB})}}highest value bit in a vector\relax
-\glodelim 
-		\glsnumformat{4}\delimT \gloskip \glogroupN
-
-\gloitem {\glosslabel{acn:NIST}{National Institute of Standards and Technology\ (\noexpand \acronymfont {NIST})}}US standardisation office\relax
-\glodelim 
-		\glsnumformat{3}\delimT \gloskip \glogroupS
-
-\gloitem {\glosslabel{acn:SoC}{System on Chip\ (\noexpand \acronymfont {SoC})}}System of seperate functional interacting together implemented on a single chip\relax
-\glodelim 
-		\glsnumformat{3}\delimT 
-\end{theglossary}
+\glossaryentry{AES?\glossaryentryfield{AES}{\glsnamefont{AES}}{Advanced Encryption Standard}{\relax }|setentrycounter{page}\glsnumberformat}{3}
+\glossaryentry{NIST?\glossaryentryfield{NIST}{\glsnamefont{NIST}}{National Institute of Standards and Technology}{\relax }|setentrycounter{page}\glsnumberformat}{3}
+\glossaryentry{ECB?\glossaryentryfield{ECB}{\glsnamefont{ECB}}{Electronic Code Book}{\relax }|setentrycounter{page}\glsnumberformat}{3}
+\glossaryentry{SoC?\glossaryentryfield{SoC}{\glsnamefont{SoC}}{System on Chip}{\relax }|setentrycounter{page}\glsnumberformat}{3}
+\glossaryentry{MSB?\glossaryentryfield{MSB}{\glsnamefont{MSB}}{Most Significant Bit}{\relax }|setentrycounter{page}\glsnumberformat}{4}
+\glossaryentry{LSB?\glossaryentryfield{LSB}{\glsnamefont{LSB}}{Least Significant Bit}{\relax }|setentrycounter{page}\glsnumberformat}{4}
+\glossaryentry{FSM?\glossaryentryfield{FSM}{\glsnamefont{FSM}}{Finite State Machine}{\relax }|setentrycounter{page}\glsnumberformat}{6}
+\glossaryentry{FSM?\glossaryentryfield{FSM}{\glsnamefont{FSM}}{Finite State Machine}{\relax }|setentrycounter{page}\glsnumberformat}{8}
+\glossaryentry{FSM?\glossaryentryfield{FSM}{\glsnamefont{FSM}}{Finite State Machine}{\relax }|setentrycounter{page}\glsnumberformat}{10}
