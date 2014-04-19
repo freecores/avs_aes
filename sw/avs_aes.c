@@ -38,12 +38,18 @@
 
 #include <avs_aes.h>
 #include <string.h>
+#include <stdint.h>
 
-/**
- * \brief setup the context to be used later.
- * initializes the pointers to the correct memory locations
- * \param context : struct grouping address information 
- */
+/** memory offset for key  DON'T CHANGE!  */
+const uint32_t KEY_ADDR = AES_BASEADDR;
+/** memory offset of payload */
+const uint32_t DATA_ADDR = AES_BASEADDR+0x08;
+/** memory offset of result   */
+const uint32_t RESULT_ADDR = AES_BASEADDR+0x10;
+/** memory offset for control word */
+const uint32_t AESCTRLWD = AES_BASEADDR+0x18;
+
+
 void avs_aes_init(avs_aes_handle* context){
 	context->key	= (unsigned int*) KEY_ADDR;
 	context->payload= (unsigned int*) DATA_ADDR;
@@ -53,31 +59,21 @@ void avs_aes_init(avs_aes_handle* context){
 }
 
 
-/**
- * \brief setup the context to be used later.
- * initializes the pointers to the correct memory locations
- * \param context  struct grouping address information 
- * \param key user key to load
- */
 void avs_aes_setKey(avs_aes_handle* context, unsigned int* key){
 	int i=0;
 	unsigned int* target_ptr = (unsigned int* )context->key;
-	// Invalidate old key;
-	*(context->control) &= (~0x00000080);
+	/* Invalidate old key; */
+	*(context->control) &= (~KEY_VALID);
+	asm __volatile("sync" :::);
 	for(i=0; i<KEYWORDS; i++){
 		*(target_ptr++) = *(key++);
 	}
-	// validate key;
-	*(context->control) |= 0x00000080;
+	asm __volatile("sync" :::);
+	/* validate key */
+	*(context->control) |= KEY_VALID;
 }
 
 
-/**
- * \brief loads payload for processing to the core
- * basically memcopy...
- * \param context  struct grouping address information 
- * \param payload user data to be processed
- */
 void avs_aes_setPayload(avs_aes_handle* context, unsigned int* payload){
 	int i=0;
 	unsigned int* target_ptr = (unsigned int* )context->payload;
@@ -87,42 +83,25 @@ void avs_aes_setPayload(avs_aes_handle* context, unsigned int* payload){
 }
 
 
-
-/**
- * \brief set the KEY_VALID flag in the control word
- * used to signal the completion of writing the key ( \ref avs_aes_setKey )
- * \param context  struct grouping address information 
- */
 void avs_aes_setKeyvalid(avs_aes_handle* context){
-	*(context->control) |= 0x00000080;
+	*(context->control) |= KEY_VALID;
+	asm __volatile("sync" :::);
 }
 
 
-/**
- * \brief set the ENCRYPT flag in the control word
- * start encryption of (hopefully) previously loaded payload 
- * \param context  struct grouping address information 
- */
 void avs_aes_encrypt(avs_aes_handle* context){
-	*(context->control) |= 0x00000001;
+	*(context->control) |= ENCRYPT;
+	asm __volatile("sync" :::);
 }
 
-/**
- * \brief set the DECRYPT flag in the control word
- * start encryption of (hopefully) previously loaded payload 
- * \param context  struct grouping address information 
- */
-void avs_aes_decrypt(avs_aes_handle* context){
-	*(context->control) |= 0x00000002;
+
+void avs_aes_decrypt(avs_aes_handle* context) {
+	*(context->control) |= DECRYPT;
+	asm __volatile("sync" :::);
 }
 
-/**
- * \brief checks the COMPLETED flag
- * can be used for ugly polling the slave if IRQs are not used
- * \param context  struct grouping address information 
- * \return 1 if still computing 0 if done.
- */
-int avs_aes_isBusy(avs_aes_handle* context){
+
+int avs_aes_isBusy(avs_aes_handle* context) {
 	unsigned int mycontrol = *(context->control);	
-	return mycontrol & 0x03; 
+	return mycontrol & (DECRYPT | ENCRYPT);
 }
